@@ -1,0 +1,42 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ArkreenMiner
+    network: mumbai
+    source:
+      address: "0x1F742C5f32C071A9925431cABb324352C6e99953"
+      abi: ArkreenMiner
+      startBlock: 35016696
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - BeaconUpgraded
+        - Upgraded
+        - MinerOnboarded
+        - StandardMinerOnboarded
+        - Transfer
+        - TransactionHistory
+      abis:
+        - name: ArkreenMiner
+          file: ./abis/ArkreenMiner.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+        - event: MinerOnboarded(indexed address,indexed address)
+          handler: handleMinerOnboarded
+        - event: StandardMinerOnboarded(indexed address,indexed address)
+          handler: handleStandardMinerOnboarded
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+
+        
+      file: ./src/arkreen-miner.ts

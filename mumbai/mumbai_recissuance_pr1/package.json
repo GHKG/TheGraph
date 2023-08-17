@@ -1,0 +1,18 @@
+{
+  "name": "mumbai_recissuance",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ ghkg/mumbai_recissuance",
+    "create-local": "graph create --node http://localhost:8020/ ghkg/mumbai_recissuance",
+    "remove-local": "graph remove --node http://localhost:8020/ ghkg/mumbai_recissuance",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ghkg/mumbai_recissuance",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.48.0",
+    "@graphprotocol/graph-ts": "0.29.1"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}
